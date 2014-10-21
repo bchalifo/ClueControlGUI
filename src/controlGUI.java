@@ -37,6 +37,7 @@ public class controlGUI extends JFrame{
 		return northPanel;
 	}
 	
+	// creates bottom panel
 	public JPanel createSouthPanel() {
 		JPanel southPanel = new JPanel();
 		JPanel panel = new JPanel();
@@ -56,40 +57,49 @@ public class controlGUI extends JFrame{
 	// create die roll
 	public JPanel createDieRoll() {
 		JPanel dieRollPanel = new JPanel();
+		// create panel components
 		JTextField dieRollText = new JTextField(3);
 		JLabel dieRollLabel = new JLabel("Roll");
 		dieRollText = new JTextField(3);
 		dieRollText.setFont(new Font("SansSerif", Font.BOLD, 12));
 		dieRollText.setEditable(false);
+		// add components to panel
 		dieRollPanel.add(dieRollLabel);
 		dieRollPanel.add(dieRollText);
 		dieRollPanel.setBorder(new TitledBorder (new EtchedBorder(), "Die"));
+		// return panel
 		return dieRollPanel;
 	}
 	
 	// create guess
 	public JPanel createGuess() {
 		JPanel guessPanel = new JPanel();
+		// create panel components
 		JLabel guessLabel = new JLabel("Guess");
 		JTextField guessText = new JTextField(20);
 		guessText.setFont(new Font("SansSerif", Font.BOLD, 12));
 		guessText.setEditable(false);
+		// add components to panel
 		guessPanel.add(guessLabel);
 		guessPanel.add(guessText);
 		guessPanel.setBorder(new TitledBorder (new EtchedBorder(), "Guess"));
+		// return panel
 		return guessPanel;
 	}
 	
 	// create guess result
 	public JPanel createGuessResult() {
 		JPanel guessResultPanel = new JPanel();
+		// create panel components
 		JLabel guessResultLabel = new JLabel("Response");
 		JTextField guessResultText = new JTextField(10);
 		guessResultText.setFont(new Font("SansSerif", Font.BOLD, 12));
 		guessResultText.setEditable(false);
+		// add components to panel
 		guessResultPanel.add(guessResultLabel);
 		guessResultPanel.add(guessResultText);
 		guessResultPanel.setBorder(new TitledBorder (new EtchedBorder(), "Guess Result"));
+		// return panel
 		return guessResultPanel;
 	}
 
