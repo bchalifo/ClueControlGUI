@@ -10,87 +10,90 @@ public class controlGUI extends JFrame{
 		setSize(new Dimension(700,200));
 		setTitle("Clue - Control GUI");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		northPanel nPanel = new northPanel();
-		add(nPanel, BorderLayout.NORTH);
-
-		southPanel sPanel = new southPanel();
-		add(sPanel, BorderLayout.SOUTH);
+		// top panel
+		JPanel panel = new JPanel();
+		panel = createNorthPanel();
+		add(panel, BorderLayout.NORTH);
+		// bottom panel
+		panel = createSouthPanel();
+		add(panel, BorderLayout.SOUTH);
 	}
 
-	public class northPanel extends JPanel{
-		private Button nextPlayer, makeAccusation;
-		private JTextField turn;
-
-		public northPanel(){
-			JLabel label = new JLabel("Whose Turn?");
-			turn = new JTextField(20);
-			turn.setFont(new Font("SansSerif", Font.BOLD, 12));
-			add(label);
-			add(turn);
-
-			nextPlayer = new Button("Next Player");
-			makeAccusation = new Button("Make an Accusation");
-			add(nextPlayer);
-			add(makeAccusation);
-		}		
-	}
-
-	public class dieRoll extends JPanel{
-		private JTextField dieRoll;
-		public dieRoll(){
-			setBorder(new TitledBorder (new EtchedBorder(), "Die"));
-			JLabel labelRoll = new JLabel("Roll");
-			dieRoll = new JTextField(3);
-			dieRoll.setFont(new Font("SansSerif", Font.BOLD, 12));
-			dieRoll.setEditable(false);
-			add(labelRoll);
-			add(dieRoll);
-		}
+	// creates top panel
+	public JPanel createNorthPanel() {
+		JPanel northPanel = new JPanel();
+		// create components
+		JLabel label = new JLabel("Whose Turn?");
+		JTextField turn = new JTextField(20);
+		turn.setFont(new Font("SansSerif", Font.BOLD, 12));
+		Button nextPlayer = new Button("Next Player");
+		Button makeAccusation = new Button("Make an Accusation");
+		// add components to panel
+		northPanel.add(label);
+		northPanel.add(turn);
+		northPanel.add(nextPlayer);
+		northPanel.add(makeAccusation);
+		// return panel
+		return northPanel;
 	}
 	
-	public class guess extends JPanel{
-		private JTextField guess;
-		public guess(){
-			setBorder(new TitledBorder (new EtchedBorder(), "Guess"));
-			JLabel labelGuess = new JLabel("Guess");
-			guess = new JTextField(20);
-			guess.setFont(new Font("SansSerif", Font.BOLD, 12));
-			guess.setEditable(false);
-			add(labelGuess);
-			add(guess);
-		}
+	public JPanel createSouthPanel() {
+		JPanel southPanel = new JPanel();
+		JPanel panel = new JPanel();
+		// die roll panel
+		panel = createDieRoll();
+		southPanel.add(panel);
+		// guess panel
+		panel = createGuess();
+		southPanel.add(panel);
+		// guess result panel
+		panel = createGuessResult();
+		southPanel.add(panel);
+		// return panel
+		return southPanel;
+	}
+
+	// create die roll
+	public JPanel createDieRoll() {
+		JPanel dieRollPanel = new JPanel();
+		JTextField dieRollText = new JTextField(3);
+		JLabel dieRollLabel = new JLabel("Roll");
+		dieRollText = new JTextField(3);
+		dieRollText.setFont(new Font("SansSerif", Font.BOLD, 12));
+		dieRollText.setEditable(false);
+		dieRollPanel.add(dieRollLabel);
+		dieRollPanel.add(dieRollText);
+		dieRollPanel.setBorder(new TitledBorder (new EtchedBorder(), "Die"));
+		return dieRollPanel;
 	}
 	
-	public class guessResult extends JPanel{
-		private JTextField guessResult;
-		public guessResult(){
-			setBorder(new TitledBorder (new EtchedBorder(), "Guess Result"));
-			JLabel labelGuessResult = new JLabel("Guess Result");
-			guessResult = new JTextField(10);
-			guessResult.setFont(new Font("SansSerif", Font.BOLD, 12));
-			guessResult.setEditable(false);
-			add(labelGuessResult);
-			add(guessResult);
-		}
+	// create guess
+	public JPanel createGuess() {
+		JPanel guessPanel = new JPanel();
+		JLabel guessLabel = new JLabel("Guess");
+		JTextField guessText = new JTextField(20);
+		guessText.setFont(new Font("SansSerif", Font.BOLD, 12));
+		guessText.setEditable(false);
+		guessPanel.add(guessLabel);
+		guessPanel.add(guessText);
+		guessPanel.setBorder(new TitledBorder (new EtchedBorder(), "Guess"));
+		return guessPanel;
+	}
+	
+	// create guess result
+	public JPanel createGuessResult() {
+		JPanel guessResultPanel = new JPanel();
+		JLabel guessResultLabel = new JLabel("Response");
+		JTextField guessResultText = new JTextField(10);
+		guessResultText.setFont(new Font("SansSerif", Font.BOLD, 12));
+		guessResultText.setEditable(false);
+		guessResultPanel.add(guessResultLabel);
+		guessResultPanel.add(guessResultText);
+		guessResultPanel.setBorder(new TitledBorder (new EtchedBorder(), "Guess Result"));
+		return guessResultPanel;
 	}
 
-	public class southPanel extends JPanel{
-		private dieRoll roll;
-		private guess guess;
-		private guessResult guessResult;
-
-		public southPanel(){
-			roll = new dieRoll();
-			guess = new guess();
-			guessResult = new guessResult();
-			
-			add(roll);
-			add(guess);
-			add(guessResult);
-		}
-	}
-
+	// main
 	public static void main(String[] args){
 		controlGUI gui = new controlGUI();
 		gui.setVisible(true);
